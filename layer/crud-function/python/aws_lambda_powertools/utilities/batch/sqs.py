@@ -94,7 +94,7 @@ class PartialSQSProcessor(BasePartialProcessor):
         Format messages to use in batch deletion
         """
         entries = []
-        # success_messages has generic type of union of SQS, Dynamodb and Kinesis Streams records or Pydantic models.
+        # success_messages has generic type of union of SQS, Dynamodb and Kinesis Streams records or Pydantic dao.
         # Here we get SQS Record only
         messages = cast(List[SQSRecord], self.success_messages)
         for msg in messages:

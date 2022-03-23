@@ -16,7 +16,7 @@ from botocore.compat import six
 class DocStringParser(six.moves.html_parser.HTMLParser):
     """
     A simple HTML parser.  Focused on converting the subset of HTML
-    that appears in the documentation strings of the JSON models into
+    that appears in the documentation strings of the JSON dao into
     simple ReST format.
     """
 

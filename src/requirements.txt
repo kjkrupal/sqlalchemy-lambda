@@ -1,2 +1,5 @@
 sqlalchemy
 aws_lambda_powertools
+pydantic
+pydantic[email]
+pymysql

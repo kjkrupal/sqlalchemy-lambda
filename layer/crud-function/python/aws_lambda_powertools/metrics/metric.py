@@ -91,7 +91,7 @@ def single_metric(
     name : str
         Metric name
     unit : MetricUnit
-        `aws_lambda_powertools.helper.models.MetricUnit`
+        `aws_lambda_powertools.helper.dao.MetricUnit`
     value : float
         Metric value
     namespace: str

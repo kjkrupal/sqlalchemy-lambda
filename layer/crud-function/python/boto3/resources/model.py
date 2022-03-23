@@ -12,14 +12,14 @@
 # language governing permissions and limitations under the License.
 
 """
-The models defined in this file represent the resource JSON description
+The dao defined in this file represent the resource JSON description
 format and provide a layer of abstraction from the raw JSON. The advantages
 of this are:
 
 * Pythonic interface (e.g. ``action.request.operation``)
 * Consumers need not change for minor JSON changes (e.g. renamed field)
 
-These models are used both by the resource factory to generate resource
+These dao are used both by the resource factory to generate resource
 classes as well as by the documentation generator.
 """
 
@@ -405,7 +405,7 @@ class ResourceModel:
     def get_attributes(self, shape):
         """
         Get a dictionary of attribute names to original name and shape
-        models that represent the attributes of this resource. Looks
+        dao that represent the attributes of this resource. Looks
         like the following:
 
             {

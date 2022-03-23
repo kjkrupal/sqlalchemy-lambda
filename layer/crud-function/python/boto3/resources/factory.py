@@ -30,7 +30,7 @@ class ResourceFactory:
     A factory to create new :py:class:`~boto3.resources.base.ServiceResource`
     classes from a :py:class:`~boto3.resources.model.ResourceModel`. There are
     two types of lookups that can be done: one on the service itself (e.g. an
-    SQS resource) and another on models contained within the service (e.g. an
+    SQS resource) and another on dao contained within the service (e.g. an
     SQS Queue resource).
     """
 
@@ -91,7 +91,7 @@ class ResourceFactory:
         }
 
         # Create and load all of attributes of the resource class based
-        # on the models.
+        # on the dao.
 
         # Identifiers
         self._load_identifiers(

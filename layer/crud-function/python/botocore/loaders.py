@@ -12,12 +12,12 @@
 # language governing permissions and limitations under the License.
 """Module for loading various model files.
 
-This module provides the classes that are used to load models used
+This module provides the classes that are used to load dao used
 by botocore.  This can include:
 
-    * Service models (e.g. the model for EC2, S3, DynamoDB, etc.)
-    * Service model extras which customize the service models
-    * Other models associated with a service (pagination, waiters)
+    * Service dao (e.g. the model for EC2, S3, DynamoDB, etc.)
+    * Service model extras which customize the service dao
+    * Other dao associated with a service (pagination, waiters)
     * Non service-specific config (Endpoint data, retry config)
 
 Loading a module is broken down into several steps:
@@ -39,18 +39,18 @@ to import, the botocore loaders have the concept of a data path exposed
 through AWS_DATA_PATH.
 
 This enables end users to provide additional search paths where we
-will attempt to load models outside of the models we ship with
+will attempt to load dao outside of the dao we ship with
 botocore.  When you create a ``Loader``, there are two paths
 automatically added to the model search path:
 
     * <botocore root>/data/
-    * ~/.aws/models
+    * ~/.aws/dao
 
 The first value is the path where all the model files shipped with
 botocore are located.
 
 The second path is so that users can just drop new model files in
-``~/.aws/models`` without having to mess around with the AWS_DATA_PATH.
+``~/.aws/dao`` without having to mess around with the AWS_DATA_PATH.
 
 The AWS_DATA_PATH using the platform specific path separator to
 separate entries (typically ``:`` on linux and ``;`` on windows).
@@ -61,7 +61,7 @@ Directory Layout
 
 The Loader expects a particular directory layout.  In order for any
 directory specified in AWS_DATA_PATH to be considered, it must have
-this structure for service models::
+this structure for service dao::
 
     <root>
       |
@@ -97,7 +97,7 @@ version to use.
 
 The ``sdk-extras`` and similar files represent extra data that needs to be
 applied to the model after it is loaded. Data in these files might represent
-information that doesn't quite fit in the original models, but is still needed
+information that doesn't quite fit in the original dao, but is still needed
 for the sdk. For instance, additional operation parameters might be added here
 which don't represent the actual service api.
 """
@@ -138,7 +138,7 @@ def instance_cache(func):
 class JSONFileLoader(object):
     """Loader JSON files.
 
-    This class can load the default format of models, which is a JSON file.
+    This class can load the default format of dao, which is a JSON file.
 
     """
     def exists(self, file_path):
@@ -201,20 +201,20 @@ def create_loader(search_path_string=None):
 
 
 class Loader(object):
-    """Find and load data models.
+    """Find and load data dao.
 
-    This class will handle searching for and loading data models.
+    This class will handle searching for and loading data dao.
 
     The main method used here is ``load_service_model``, which is a
     convenience method over ``load_data`` and ``determine_latest_version``.
 
     """
     FILE_LOADER_CLASS = JSONFileLoader
-    # The included models in botocore/data/ that we ship with botocore.
+    # The included dao in botocore/data/ that we ship with botocore.
     BUILTIN_DATA_PATH = os.path.join(BOTOCORE_ROOT, 'data')
-    # For convenience we automatically add ~/.aws/models to the data path.
+    # For convenience we automatically add ~/.aws/dao to the data path.
     CUSTOMER_DATA_PATH = os.path.join(os.path.expanduser('~'),
-                                      '.aws', 'models')
+                                      '.aws', 'dao')
     BUILTIN_EXTRAS_TYPES = ['sdk']
 
     def __init__(self, extra_search_paths=None, file_loader=None,
@@ -344,7 +344,7 @@ class Loader(object):
     def load_service_model(self, service_name, type_name, api_version=None):
         """Load a botocore service model
 
-        This is the main method for loading botocore models (e.g. a service
+        This is the main method for loading botocore dao (e.g. a service
         model, pagination configs, waiter configs, etc.).
 
         :type service_name: str
@@ -443,7 +443,7 @@ class Loader(object):
 
 
 class ExtrasProcessor(object):
-    """Processes data from extras files into service models."""
+    """Processes data from extras files into service dao."""
     def process(self, original_model, extra_models):
         """Processes data from a list of loaded extras files into a model
 
@@ -451,7 +451,7 @@ class ExtrasProcessor(object):
         :param original_model: The service model to load all the extras into.
 
         :type extra_models: iterable of dict
-        :param extra_models: A list of loaded extras models.
+        :param extra_models: A list of loaded extras dao.
         """
         for extras in extra_models:
             self._process(original_model, extras)

@@ -108,7 +108,7 @@ class MetricManager:
         name : str
             Metric name
         unit : Union[MetricUnit, str]
-            `aws_lambda_powertools.helper.models.MetricUnit`
+            `aws_lambda_powertools.helper.dao.MetricUnit`
         value : float
             Metric value
 

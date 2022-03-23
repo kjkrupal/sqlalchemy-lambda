@@ -19,7 +19,7 @@ def event_parser(
     model: Type[Model],
     envelope: Optional[Type[Envelope]] = None,
 ) -> EventParserReturnType:
-    """Lambda handler decorator to parse & validate events using Pydantic models
+    """Lambda handler decorator to parse & validate events using Pydantic dao
 
     It requires a model that implements Pydantic BaseModel to parse & validate the event.
 
@@ -95,7 +95,7 @@ def parse(event: Dict[str, Any], model: Type[Model], envelope: Type[Envelope]) -
 
 
 def parse(event: Dict[str, Any], model: Type[Model], envelope: Optional[Type[Envelope]] = None):
-    """Standalone function to parse & validate events using Pydantic models
+    """Standalone function to parse & validate events using Pydantic dao
 
     Typically used when you need fine-grained control over error handling compared to event_parser decorator.
 

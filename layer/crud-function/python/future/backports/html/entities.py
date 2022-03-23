@@ -1382,7 +1382,7 @@ html5 = {
     'mlcp;': '\u2adb',
     'mldr;': '\u2026',
     'mnplus;': '\u2213',
-    'models;': '\u22a7',
+    'dao;': '\u22a7',
     'Mopf;': '\U0001d544',
     'mopf;': '\U0001d55e',
     'mp;': '\u2213',

@@ -30,7 +30,7 @@ class ServiceDocumenter(BaseServiceDocumenter):
         super().__init__(
             service_name=service_name,
             # I know that this is an internal attribute, but the botocore session
-            # is needed to load the paginator and waiter models.
+            # is needed to load the paginator and waiter dao.
             session=session._session,
         )
         self._boto3_session = session

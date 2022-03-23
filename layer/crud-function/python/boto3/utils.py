@@ -39,7 +39,7 @@ class ServiceContext(_ServiceContext):
     :param service_waiter_model: The waiter model of the service.
 
     :type resource_json_definitions: dict
-    :param resource_json_definitions: The loaded json models of all resource
+    :param resource_json_definitions: The loaded json dao of all resource
         shapes for a service. It is equivalient of loading a
         ``resource-1.json`` and retrieving the value at the key "resources".
     """

@@ -99,7 +99,7 @@ class AppSyncResolver(BaseRouter):
             return app.resolve(event, context)
         ```
 
-        **Bringing custom models**
+        **Bringing custom dao**
 
         ```python
         from aws_lambda_powertools import Logger, Tracer
