@@ -54,7 +54,7 @@ class SqlalchemyLambdaStack(Stack):
 
         if not os.environ.get("SKIP_PIP"):
             subprocess.check_call(
-                f"pip install -r {requirements_file} -t {output_dir}/python".split()
+                f"pip install -r {requirements_file} -t {output_dir}/python --upgrade".split()
             )
 
         layer_id = f"{stack_name}-{function_name}-dependencies"
