@@ -8,4 +8,4 @@ class CreateAuthor(BaseModel):
 class UpdateAuthor(BaseModel):
     id: int
     name: str
-    
+
